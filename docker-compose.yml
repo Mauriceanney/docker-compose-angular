@@ -1,0 +1,18 @@
+---
+
+version: "3.3"
+services:
+  npm-install:
+    image: "node:${NODE_VERSION}"
+    command: npm install
+    working_dir: /app
+    volumes:
+      - ./src:/app
+  node:
+    image: "node:${NODE_VERSION}"
+    command: ${NODE_START_COMMAND}
+    working_dir: /app
+    ports:
+      - "${NODE_PORT}:${NODE_PORT}"
+    volumes:
+      - ./src:/app
